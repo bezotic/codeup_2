@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css positioning</title>
+	<link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+	<style>
+		.box {
+			height: 50px;
+            width: 50px;
+            padding:10px;
+             border-style: solid;
+    		border-width: 1px;
+            border-color: black;
+			font-weight: bold;
+			font-family: 'Arvo', serif;
+		}
+		#container {
+			clear:left;
+			padding-top: 50px;
+		}
+		#red {
+			background-color: #d84231;
+			float:left;
+
+			
+		}
+
+		#orange {
+			background-color: #eaae33;
+			float:left;
+			position:relative;
+			left:50px;
+			
+		}
+
+		#yellow {
+			background-color: #FDF834;
+			float:left;
+			position:relative;
+			left:100px;
+		}
+
+		#green {
+			background-color: #578C05;
+			float:left;
+			
+		}
+
+		#blue {
+			background-color: #234AFB;
+			float:left;
+		    left: 128px;
+		    position: absolute;
+				}
+
+		#pink {
+			background-color: #DF8BF0;
+			float:left;
+			position: relative;
+   			left: 170px;
+			
+		}
+	</style>
+
+</head>
+<body>
+	<a href="http://www.wikipedia.org/wiki/Visible_spectrum" target="_blank"><h1>Visible Spectrum Wavelengths</h1></a>
+
+		<div class='box' id="red">
+			<p>620-750nm</p>
+		</div>
+		<div class='box' id="orange">
+			<p>590-620nm</p>
+		</div>
+		<div class='box' id="yellow">
+			<p>570-590nm</p>
+		</div>
+	<div id="container">
+		<div class='box' id="green">
+			<p>495-570nm</p>
+		</div>
+		<div class="box" id="blue">
+			<p>450-495nm</p>
+		</div>
+		<div class="box" id="pink">
+			<p>380-450nm</p>
+		</div>
+	</div>
+</body>
+</html>

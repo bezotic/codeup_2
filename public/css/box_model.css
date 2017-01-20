@@ -1,0 +1,46 @@
+.box {
+	border:1px 1px;
+	height: 50px;
+	width: 150px;
+	color:white;
+	padding-bottom:10px;
+	font-weight: bold;
+	font-family: 'Arvo', serif;
+
+}
+
+#red {
+	background-color: #d84231;
+	position:relative;
+	left:30px;
+}
+
+#orange {
+	background-color: #eaae33;
+	position:relative;
+	left:60px;
+}
+
+#yellow {
+	background-color: #FDF834;
+	position:relative;
+	left:90px;
+}
+
+#green {
+	background-color: #578C05;
+	position:relative;
+	left:120px;
+}
+
+#blue {
+	background-color: #234AFB;
+	position:relative;
+	left:150px;
+}
+
+#pink {
+	background-color: #DF8BF0;
+	position:relative;
+	left:180px;
+}
