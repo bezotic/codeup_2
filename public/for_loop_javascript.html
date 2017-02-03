@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>for loop</title>
+</head>
+<body>
+	<script>
+	"use strict"
+	console.log('first exercise');
+	var zero = '0';
+	var string = '';
+
+	for (var n = 1; n <= 10; n++) {
+		if (n == 10) {
+			string = zero.repeat(n);
+			
+		} else {
+			string = n.toString().repeat(n);
+		}
+		console.log(string);
+		
+		
+		
+	}
+	console.log("===========");
+
+	console.log("second exercise");
+
+	var randomNum = Math.floor(Math.random()* 10) + 1;
+	var result;
+
+	for (var n = 1; n<=10; n++) {
+		var multiply = randomNum * n; 
+		console.log(randomNum + " x " + n + " = " + multiply);
+	}
+	console.log("===========");
+	
+	
+	console.log('Third Exercise');
+	 for (var n = 1; n <= 10; n++) {
+	 	var randomNum = Math.floor(Math.random() * 20) + 180;
+	 	if ((randomNum % 2) !== 0) {
+	 		console.log(randomNum + " is odd ");
+	 	} else {
+	 		console.log(randomNum + " is even ");
+	 	}
+	 }
+	 console.log("===========");
+
+	 	console.log('fourth exercise');
+	 for (var n = 100; n >= 5; n -= 5) {
+	 	
+	 	console.log(n);
+	 }
+
+	console.log("===========");
+
+	</script>
+
+	
+	
+</body>
+</html>

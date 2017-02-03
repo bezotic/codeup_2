@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>switch_js</title>
+</head>
+<body>
+
+	<script>
+	"use strict"
+
+		var luckyNumber = Math.floor(Math.random()* 6);
+		var discount1, discount2, discount4, discount5;
+		discount1 = .10;
+		discount2 = .25;
+		discount4 = .50;
+		discount5 = 1.0;
+		var total = 60;
+		switch (luckyNumber) {
+		    case 0:
+		        console.log("You landed on 0. Therefore no discount. your total is" + ": " + total);
+		        break;
+		    case 1:
+		    	var addDiscount = total * discount1;
+		    	var afterDiscount = total - addDiscount;
+		        console.log("you landed on 1. You receive a 10% discount" + "\n" + "total: " + " "+ afterDiscount);
+		        break;
+		    case 2:
+		        var addDiscount = total * discount2;
+		    	var afterDiscount = total - addDiscount;
+		        console.log("you landed on 2. You receive a 25% discount" + "\n" + "total: " + " "+ afterDiscount);
+		        break;
+		    case 3:
+		    	 console.log("You landed on 3. Therefore no discount. your total is" + ": " + total);
+		    	 break;
+		    case 4:
+		        var addDiscount = total * discount4;
+		    	var afterDiscount = total - addDiscount;
+		        console.log("you landed on 4. You receive a 50% discount" + "\n" + "total: " + " "+ afterDiscount);
+		        break;
+		    case 5:
+		         var addDiscount = total * discount5;
+		    	var afterDiscount = total - addDiscount;
+		        console.log("you landed on 5. You receive a 100% discount" + "\n" + "total: " + " "+ afterDiscount);
+		        break;
+		}
+
+		var numberOfMonths = Math.floor(Math.random()* 13);
+		var months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september',
+		'october', 'november', 'december']
+	
+		switch (numberOfMonths) {
+			case 1:
+				console.log(months[0]);
+				break;
+			case 2:
+				console.log(months[1]);
+				break;
+			case 3:
+				console.log(months[2]);
+				break;
+			case 4:
+				console.log(months[3]);
+				break;
+			case 5:
+				console.log(months[4]);
+				break;
+			case 6:
+				console.log(months[5]);
+				break;
+			case 7:
+				console.log(months[6]);
+				break;
+			case 8:
+				console.log(months[7]);
+				break;
+			case 9:
+				console.log(months[8]);
+				break;
+			case 10:
+				console.log(months[9]);
+				break;
+			case 11:
+				console.log(months[10]);
+				break;
+			case 12:
+				console.log(months[11]);
+				break;
+
+		}
+
+
+	</script>
+	
+</body>
+</html>
