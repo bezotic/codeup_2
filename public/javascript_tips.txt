@@ -1,0 +1,1302 @@
+Javascript Tips (remember to console.log to find bugs)
+=================================
+
+javascript: numbers
+1. Arithmetic Operators
+a. modulus can be used to determine if a number is odd or even
+example: 2 % 2 = 0 -> number is even
+example: 2 % 1 = 1 -> number is odd
+// remainder of 1 is always odd/ remainder of 0 is always odd
+
+2. Shorthand operators
+a. The assignment operator ,=, can be combined with certain arithmetic operators to create shorthand assignments.
+example: var x = 2; x += 2 is equivalent to x + 2;
+
+3. Number function
+a. isNaN() determines if parameter is a number;
+	example: isNan(3);
+b. .toFixed allows you to specify the number of decimal places a number should be displayed 
+	example: var price = 3.1;
+			 price.toFixed(2); // yields 3.10
+c. Number.MAX_VALUE : This constant will return the maximum possible value for a number.
+
+==========================
+
+javascript: strings
+
+1. special characters and escaping
+	a. \n = new line	example: var newLine = "This string has\na line break.";
+	b. \t = tab
+	c. \\ = backslash
+	d. \' = Apostrophe or single quote example: var knockKnock = 'Who\'s there?';
+	e. \" = double quote
+
+2. parsing a string into a number
+	a. parseInt() : takes a string as a parameter and returns a number in integer form.
+		example: parseInt("1") + 2; // yields number 3
+	b. parseFloat() : takes a string as a parameter and returns a number in float/decimal form.
+		example: parseFloat('345.24') = 345.24
+
+3. functions and properties
+	length : property that describes the number of characters in the string.
+	.indexOf(char) : returns the index of the specified character in the string.
+	.replace(find, replace) : returns a copy of the string after performing a substitution.
+	.substring(fromIndex, toIndex) : returns a subset of the original string based on the provided indices.
+	.toUpperCase() : returns a copy of the string in all upper case.
+	.toLowerCase() : returns a copy of the string in all lower case.
+	.trim() : returns a copy of the string with whitespace at the beginning and end removed.
+	String.fromCharCode(code) : returns a string based on the provided ASCII code.
+
+=============================
+
+javascript : Statements
+
+if: An if statement allows you to execute code based on certain conditions. JavaScript if statements will be 	 familiar if you have worked with PHP or Java since the syntax is the same
+	example: if (condition) {
+				// code here gets executed if condition evaluates to true
+			 }
+
+if/else: Following an if statement, you can have an else statement. The code in the else statement will get 		 executed when the condition in the if statement evaluates to false.
+		 example:  if/else example
+					if (condition) {
+					    // code here gets executed if condition evaluates to true
+					} else {
+					    // code here gets executed if condition evaluates to false
+					}
+
+						Example below:
+
+					'use strict';
+
+					var message;
+
+					if (success) {
+					    message = "Operation was successful.";
+					} else {
+					    message = "Oops, something went wrong.";
+					}
+
+					// the above if/else can be re-written as:
+					var message = (success) ? "Operation was successful." : "Oops, something went wrong.";
+
+
+if/else if/else: You can also chain multiple else conditions by using else if as follows:
+				example: You can also chain multiple else conditions by using else if as follows:
+
+				// if/else if/else example
+				if (condition1) {
+				    // code here gets executed if condition1 evaluates to true
+				} else if (condition2) {
+				    // code here gets executed if condition2 evaluates to true
+				} else {
+				    // code here gets executed if neither condition1 nor condition2 evaluate to true
+				}
+
+				// note: you can leave off the trailing else if it isn't needed
+
+
+2. Javascript Switch Statements;
+
+switch: The switch statement provides an alternative to a series of if-else statements. If you have a long series of if-else statements, the use of a switch statement can increase code readability. Always try to chose the language tools that will make your code as readable as possible.
+
+example: 'use strict';
+
+var whatAmI = "I am a string.";
+
+if (typeof whatAmI === "boolean") {
+    console.log("You are a boolean.");
+} else if (typeof whatAmI === "number") {
+    console.log("You are a number.");
+} else if (typeof whatAmI === "string") {
+    console.log("You are a string.");
+} else if (typeof whatAmI === "function" || typeof whatAmI === "object") {
+    console.log("You are an object.");
+} else if (typeof whatAmI === "undefined") {
+    console.log("You are undefined.");
+} else {
+    console.log("I have no clue.");
+}
+
+3. while loops
+
+while: A while loop is a basic looping construct that will execute a code block as long as a certain condition is true. 
+example: 
+var i = 0;
+
+while (i <= 10) {
+    console.log('while loop iteration #' + i);
+    i++;
+}
+
+do-while: A do-while loop is only different from a while in that the condition is evaluated at the end of the loop instead of the beginning.
+
+example:  var allCones = Math.floor(Math.random() * 50) + 50;
+		 var remainingCones = allCones;
+
+
+		 console.log("I started off with" + " " + allCones + " " + "cones");
+		
+		do {
+			 // This is how you get a random number between 1 and 5
+		 	var cones = Math.floor(Math.random() * 5) + 1;
+		 	remainingCones = remainingCones - cones;
+		    console.log(cones + " " + " sold" + "\n" + "remaining cones: " + " " + remainingCones);
+		    
+		} while (remainingCones > 2);
+
+		console.log("I sold all my cones");
+
+
+4. for loops
+
+for: A for loop is a robust looping mechanism available in many programming languages. JavaScript's implementation syntax matches that of many other languages.
+
+examples: console.log('first exercise');
+		var zero = '0';
+		var string = '';
+
+	for (var n = 1; n <= 10; n++) {
+		if (n == 10) {
+			string = zero.repeat(n); // 10 as 0. repeat function repeats string.
+			
+		} else {
+			string = n.toString().repeat(n); // toString turns number into a string in order to user repeat.
+		}
+		console.log(string);
+
+		
+		
+	}
+	console.log("===========");
+
+	console.log("second exercise");
+
+	var randomNum = Math.floor(Math.random()* 10) + 1;
+	var result;
+
+	for (var n = 1; n<=10; n++) {
+		var multiply = randomNum * n; 
+		console.log(randomNum + " x " + n + " = " + multiply);
+	}
+	console.log("===========");
+	
+	
+	console.log('Third Exercise');
+	 for (var n = 1; n <= 10; n++) {
+	 	var randomNum = Math.floor(Math.random() * 20) + 180;
+	 	if ((randomNum % 2) !== 0) {
+	 		console.log(randomNum + " is odd ");
+	 	} else {
+	 		console.log(randomNum + " is even ");
+	 	}
+	 }
+	 console.log("===========");
+
+	 	console.log('fourth exercise');
+	 for (var n = 100; n >= 5; n -= 5) {
+	 	
+	 	console.log(n);
+	 }
+
+	console.log("===========");
+
+5. Break Continue
+
+break continue: Sometimes, a condition independent of the loop condition will occur that gives reason to exit the loop. The break keyword allows you to exit the loop at any time. Code execution in the loop will immediately halted and the loop will not continue.
+
+example:  var randomNumToSkip = Math.floor((Math.random()*50)+1);
+			if (randomNumToSkip % 2 != 0) {
+				console.log("random number to skip: " + randomNumToSkip);
+			}
+
+
+
+			for (var i = 1; i <= 50; i++) {
+				if (i % 2 != 0) {
+					if (i == randomNumToSkip) {
+						console.log('Yikes! skipping: ' + i);
+						continue;
+					} 
+					console.log("here is and odd number " + i);
+				}
+			}
+
+=======================================
+
+javascript: functions
+functions: A function is a reusable block of code that performs a specified task, possibly calculating a value to return.
+
+				example: "use strict";
+
+				var myNameIs = 'Richard'; // TODO: Fill in your name here.
+
+				// TODO:
+				// Create a function called 'sayHello' that takes a parameter 'name'.
+				// When called, the function should log a message that says hello from the passed in name.
+				
+				function sayHello(name) {
+					var name;
+					name = "hello from the past" + " " + myNameIs;
+					return name;
+				}
+
+				sayHello(myNameIs);
+
+				console.log(sayHello());
+
+
+
+				// TODO: Call the function 'sayHello' passing the variable 'myNameIs' as a parameter.
+
+				// Don't modify the following line
+				// It generates a random number between 1 and 100 and stores it in random
+				
+				var random = Math.floor((Math.random()*100)+1);
+
+				// TODO:
+				// Create a function called 'isOdd' that takes a number as a parameter.
+				// The function should use the ternary operator to log a message.
+				// The log should tell the number passed in and whether it is odd or not.
+
+				// TODO: Call the function 'isOdd' passing the variable 'random' as a parameter.
+
+				function isOdd(n) {
+					var result
+					if (n % 2 == 0) {
+						 result = console.log(n + " " + "is even");
+					} else {
+						 result = console.log(n + " " + "is odd");
+					}
+					return result;
+					
+				}
+				isOdd(random);
+
+===================================
+
+javascript: user interaction
+
+example:		"use strict";
+
+			// TODO: Ask the user for their name.
+			//       Keep asking if an empty input is provided.
+
+
+
+
+			do {
+				var username = prompt('what is your name');
+			} while (username.trim() == '' || username == null); 
+
+
+
+			alert('welcome!' + " " + username);
+
+			var confirm = confirm('Do you like Pizza?');
+
+			 if (confirm) {
+			 	alert('awesome! Me too!');
+			 } else {
+			 	alert('lame!');
+			 }
+
+			// TODO: Show an alert message that welcomes the user based on their input.
+
+			// TODO: Ask the user if they like pizza.
+			//       Based on their answer show a creative alert message.
+
+=====================================
+
+javascript: scope
+
+1.global variable: Variables declared outside of a function are referred to as global variables and are in the global scope. Global variables can be accessed by any scripts or functions contained on the web page.
+
+
+2.local variable: Variables declared within a function are referred to as Local variables. Local variables can be accessed within the scope they are declared in, or in any nested function scopes.
+
+3. IIFE functions: Due to the way scoping works in JavaScript, it is considered best practice to expose only what is necessary to the global scope. As we saw in the examples above, global variables trickle down into the scope of other functions and could contaminate variables causing other scripts not to function properly.
+
+The use of an Immediately-Invoked Function Expression (IIFE) is one tool that can help us solve this problem.
+
+	example: 	'use strict';
+
+				// declare a function that will be invoked immediately
+				// notice the parens surrounding the function. these are necessary
+				
+				(function () {
+				    // variables and functions in here are only accessible inside this function's scope
+				    var iffeVar = "I'm local to the IIFE.";
+				})();
+
+=================================
+
+javascript: arrays
+
+arrays: An array is a data structure that holds an ordered list of items. Each slot in a JavaScript array can hold any type of data. In JavaScript, arrays are objects, and objects will be discussed in detail in the Objects and OOP module.
+
+1. iterating arrays
+	a. for loop iteration
+		example: var shapes = ['square', 'rectangle', 'circle', 'triangle'];
+
+					// loop through the array and log the values
+					for (var i = 0; i < shapes.length; i++) {
+					    console.log('The shape at index ' + i + ' is: ' + shapes[i]);
+					}
+
+	1a. for-each loop iteration
+		example: var shapes = ['square', 'rectangle', 'circle', 'triangle'];
+
+			// loop through the array and log the values
+			shapes.forEach(function (element, index, array) {
+
+			    // element is the shape name
+			    // index is the iterator
+			    // array is the shapes array itself
+
+			    console.log('The shape at index ' + index + ' is: ' + element);
+			});
+
+Examples: 
+	(function() {
+
+					 // TODO: Create an array of 4 people's names using literal array notation, in a variable called 'names'.
+
+    // TODO: Create a log statement that will log the number of elements in the names array.
+
+    // TODO: Create log statements that will print each of the names array elements individually.
+    
+    var names = ['richard', 'ray', 'josue', 'jon'];
+    console.log('number of elements in array: ' + names.length);
+
+    console.log(names[0]);
+    console.log(names[1]);
+    console.log(names[2]);
+    console.log(names[3]);
+    console.log(names.join(' and '));
+
+    console.log('for loop iteration');
+
+	// declare and initialize array
+	for (var i = 0; i < names.length; i++) {
+		console.log('the name of index ' + i + ' is ' + names[i]);
+
+	}
+
+	console.log('=====================');
+	console.log('for each iteration');
+
+	names.forEach(function(names,index,array){ // remember. parameters are just placeholders fwiend.
+		console.log('the name of index ' + index + " is " + names);
+
+	});
+
+
+})();
+
+
+2. Manipulating Arrays
+
+2a. Adding Elements
+
+.push() : adds an item to the end of an array
+
+.unshift(): adds and item to the beginning of an array
+
+	example: 'use strict';
+
+		var daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday'];
+
+		console.log(daysOfTheWeek);
+		// ['Monday', 'Tuesday', 'Wednesday', 'Thursday']
+
+		// let's add 'Friday' and 'Saturday' to the end of the week
+		daysOfTheWeek.push('Friday', 'Saturday');
+
+		console.log(daysOfTheWeek);
+		// ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
+		// let's add 'Sunday' to the beginning of the week
+		daysOfTheWeek.unshift('Sunday');
+
+		console.log(daysOfTheWeek);
+		// ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
+2b. Removing elements
+	
+.pop() : Removes the last item
+
+.shift() : Removes the last Item
+
+	example:  var todoList = ['Take out the trash', 'Clean the car', 'Pay the bills'];
+
+				console.log('My todo list:');
+
+				console.log(todoList);
+				// ['Take out the trash', 'Clean the car', 'Pay the bills']
+
+				console.log('Completing the last item: ' + todoList[todoList.length - 1]);
+
+				// let's remove the last item
+				var doneItem = todoList.pop();
+
+				// log what we did
+				console.log('Task complete: ' + doneItem);
+
+				console.log(todoList);
+				// ['Take out the trash', 'Clean the car']
+
+				console.log('Completing the first item: ' + todoList[0]);
+
+				// let's remove the first item
+				doneItem = todoList.shift();
+
+				// log what we did
+				console.log('Task complete: ' + doneItem);
+
+				console.log(todoList);
+				// ['Clean the car']
+
+2c. locating array elements
+
+.indexOf() : provides index of element withing array;
+
+2d. Removing Elements with splice
+
+	.splice() : To remove one or more elements with the splice method, pass the start index of the modification, and then the number of elements to remove.
+
+	example: arrayName.splice(startIndex, numberOfItemsToRemove);
+
+	example: 
+				var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+
+				console.log(colors);
+
+				console.log('Removing the first two colors.');
+
+				var removed = colors.splice(0, 2);
+
+				console.log(removed);
+				// ['red', 'orange']
+
+				console.log(colors);
+				// ['yellow', 'green', 'blue', 'indigo', 'violet']
+
+				console.log('Removing green.');
+
+				removed = colors.splice(colors.indexOf('green'), 1);
+
+				console.log(removed);
+				// ['green']
+
+				console.log(colors);
+				// ['yellow', 'blue', 'indigo', 'violet']
+
+2e. Replacing Elements with Splice
+
+.spice() : Replacing elements with the splice method works almost the same way as adding elements. The only difference is that instead of passing a 0 as the second parameter, you pass the number of items you'd like to remove.
+
+example:						
+
+					var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+
+					console.log(colors);
+
+					console.log('Replacing indigo and violet with purple.');
+
+					colors.splice(colors.indexOf('indigo'), 2, 'purple');
+
+					console.log(colors);
+					// ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
+
+
+2ee. Adding Elements with splice: To add one or more elements to an array using the splice method, pass the start index of the modification, followed by a 0, followed by a comma separated list of items to add.
+
+example: 					'use strict';
+
+					var colors = ['red', 'orange', 'yellow', 'indigo', 'violet'];
+
+					console.log(colors);
+
+					console.log('Adding green and blue after yellow.');
+
+					colors.splice(colors.indexOf('yellow') + 1, 0, 'green', 'blue');
+
+					console.log(colors);
+					// ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+
+
+2f. Reversing
+
+example:
+
+							
+
+					var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+
+					console.log(colors);
+					// ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+
+					console.log('Reversing the colors array.');
+
+					colors.reverse();
+
+					console.log(colors);
+					// ['violet', 'indigo', 'blue', 'green', 'yellow', 'orange', 'red']
+
+2g. Sort
+
+.sort() : An array can be sorted by calling the sort method. The sort method, by default, will convert items in the array to their string equivalent and order them based on that value. A comparator function can be passed to the sort method, but we will not be covering that.
+
+
+example:				
+
+					
+
+					'use strict';
+
+					var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+
+					console.log(colors);
+					// ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+
+					console.log('Sorting the colors array.');
+
+					colors.sort();
+
+					console.log(colors);
+					// ['blue', 'green', 'indigo', 'orange', 'red', 'violet', 'yellow']
+
+
+
+
+ATTENTION! Below is an example of all of them being used.
+
+
+					(function(){
+    "use strict";
+
+    // TODO: Create an array holding the names of the eight planets in our solar system in order, starting closest to the sun.
+   
+
+    var planets = ['Earth', 'Jupiter', 'Mars', 'Venus', 'Mercury', 'Neptune', 'Saturn', 'Uranus'];
+
+    // function for logging the planets array
+    function logPlanets() {
+        console.log("Here is the list of planets:");
+        console.log(planets);
+        console.log("---- ---- ---- ----");
+    }
+
+    logPlanets();
+
+    console.log('Adding "The Sun" to the beginning of the planets array.');
+    // TODO: Read the console.log() statement above. Write code to perform the step it describes.
+    planets.unshift('Sun');
+    logPlanets();
+
+    console.log('Adding "Pluto" to the end of the planets array.');
+    // TODO: Read the console.log() statement above. Write code to perform the step it describes.
+    planets.push('Pluto');
+    logPlanets();
+
+    console.log('Removing "The Sun" from the beginning of the planets array.');
+    // TODO: Read the console.log() statement above. Write code to perform the step it describes.
+    planets.shift();
+    logPlanets();
+
+    console.log('Removing "Pluto" from the end of the planets array.');
+    // TODO: Read the console.log() statement above. Write code to perform the step it describes.
+    planets.pop();
+    logPlanets();
+
+    console.log('Finding and logging the index of "Earth" in the planets array.');
+    // TODO: Read the console.log() statement above. Write code to perform the step it describes.
+    var indexOfEarth = planets.indexOf('Earth');
+    console.log('The index of Earth is: ' + indexOfEarth);
+
+    console.log('Using splice to remove the planet after "Earth".');
+    // TODO: Read the console.log() statement above. Write code to perform the step it describes.
+    planets.splice(1,1);
+    // or planets.splice(planets.indexOf('Jupiter'), 1);
+    logPlanets();
+
+    console.log('Using splice to add back the planet after "Earth".');
+    // TODO: Read the console.log() statement above. Write code to perform the step it describes.
+    planets.splice(planets.indexOf('Earth') + 1, 0, 'Jupiter');
+    logPlanets();
+
+    console.log("Reversing the order of the planets array.");
+    // TODO: Read the console.log() statement above. Write code to perform the step it describes.
+    planets.reverse();
+    logPlanets();
+
+    console.log("Sorting the planets array.");
+    // TODO: Read the console.log() statement above. Write code to perform the step it describes.
+    planets.sort();
+    logPlanets();
+    
+    console.log('replacing a planet with silly name');
+    planets.splice(planets.indexOf('Jupiter'),1, 'chicken country');
+
+    logPlanets();
+})();
+
+===========================
+
+javascript: split and join
+
+1 .split() : Splitting will take a string and turn it into an array. String splitting uses a delimiter to decide where the splitting should occur. To split a string, call the split method passing the delimiter as a parameter. For 
+
+
+example:
+
+							var namesString = "Joe,Bob,Sally";
+
+							console.log(namesString);
+							// Joe,Bob,Sally
+
+							var namesArray = namesString.split(',');
+
+							console.log(namesArray);
+							// ['Joe', 'Bob', 'Sally']
+
+
+1a. .join() : Joining will take an array and convert it to a string with the delimiter of your choice. The join method is available on an array object and it takes a delimiter as a parameter. Let's look at the first example again, but in reverse.
+
+
+example:
+
+								var namesArray = ['Joe', 'Bob', 'Sally'];
+
+								console.log(namesArray);
+								// ['Joe', 'Bob', 'Sally']
+
+								var namesString = namesArray.join(',');
+
+								console.log(namesString);
+								// Joe,Bob,Sally
+
+=======================================
+
+javascript: objects
+
+1. objects: An object is a grouping of data and functionality. Data items contained in an object are referred to as properties, and functions on an object are referred to as methods.
+
+example(new object instance):
+									var car = new Object();
+
+									console.log(typeof car);
+									// "object"
+
+
+1a. object literal notation: An Object instance can also be created by using object literal notation (using curly braces). JavaScript will treat this just as if you had used new Object()
+
+example(object literal notation):
+
+										var car = {};
+
+										console.log(typeof car);
+										// "object"
+
+
+
+2. Accessing propertis on an object: Object properties are accessed in the same way they are set, either via dot notation or array notation.
+
+example: 
+
+								var car = {};
+								car.make = "Toyota";
+								car.model = "Camry";
+
+								// use array notation to access "make" property
+								console.log('The car make is: ' + car['make']);
+
+								// use dot notation to access "model" property
+								console.log('The car model is: ' + car.model);
+
+
+3. Assigning Functionality to an object: Besides having data properties, an object can also have functions, known as object methods. Creating a method on an object is much like creating a property, except the property value is a function.
+
+example:
+
+								
+
+								'use strict';
+
+								var car = {};
+								car.make = "Toyota";
+								car.model = "Camry";
+
+								// create a honk method on the car object
+								car.honk = function () {
+								    alert('Honk! Honk!');
+								};
+
+								// honk the horn
+								car.honk();
+
+
+4. The this Keyword
+this: The this keyword in JavaScript is a bit more complicated than in other languages. In other languages like PHP or Java, this is simply a reference to the current object. In JavaScript, this can refer to a different object based on how a function is called. However, the intricacies of this are a more advanced topic.
+
+example: 
+					
+								var car = {};
+								car.make = "Toyota";
+								car.model = "Camry";
+
+								// create a logMakeModel method on the car object
+								car.logMakeModel = function () {
+								    console.log('Car make/model is: ' + this.make + ' ' + this.model);
+								};
+
+								// log the make/model
+								car.logMakeModel();
+
+
+
+example:			
+	
+								(function(){
+							    "use strict";
+
+							    // TODO: Create person object
+
+
+							     var person = {};
+							     person.firstName = "Ricardo";
+							     person.lastName = "De Los Santos";
+
+							     person.hello = function() {
+							     	alert('hello ' + this.firstName + " " + this.lastName);
+							     }
+
+							    // TODO: Create firstName and lastName properties in your person object; assign your name to them
+
+							    // TODO: Add a sayHello method to the person object that
+							    //       alerts a greeting using the firstName and lastName properties
+
+							    // Say hello from the person object.
+							     person.hello();
+
+
+							})();
+
+
+javascript: JSON
+
+JSON: JavaScript Object Notation (JSON) is a data-interchange format that is easy for humans to read and write. It is widely used in cloud based services and web application programming interfaces (APIs).
+
+Object literal and array literal notations were discussed in their respective sections. These same notations are used in JSON.
+
+{} // empty object in json form
+
+[] // empty array in json form
+
+objects in json: Object properties in JSON start with a string version of the property name, followed by a colon, followed by the value of the property. Properties are separated by a comma.
+
+example: 
+
+								{
+								   "name1": "value1",
+								   "name2": "value2"
+								}
+
+example utilizing all the possible types:
+
+
+								{
+								    "stringProp": "stringValue",
+								    "numberProp": 1,
+								    "objectProp": {
+								        "prop": "value"
+								    },
+								    "arrayProp" : ['item1', 'item2'],
+								    "arrayOfObjectsProp" : [
+								        {
+								            "prop": "value"
+								        },
+								        {
+								            "prop": "value"
+								        }
+								    ],
+								    "boolProp"  : true,
+								    "nullProp"  : null
+								}
+								The
+
+
+example with a array foreach loop :
+
+
+								<!DOCTYPE html>
+								<html lang="en">
+								<head>
+									<meta charset="UTF-8">
+									<title>Document</title>
+								</head>
+								<body>
+									<h1>Family lineage</h1>
+										<p id="name"></p>
+										<p id="name"></p>
+
+									<script>
+
+									'use strict';
+
+								// todo:
+								// Create an array of objects that represent books.
+
+								var books = [];
+
+								books = [
+
+									{ title :'cat and hat',
+									  author : {
+									  	firstName : 'Dr',
+									  	lastName : 'Suess'
+
+									  }
+									},
+
+									{ title :'if you give a moose a pancake',
+									  author : {
+									  	firstName : 'some',
+									  	lastName : 'person'
+
+									  }
+									},
+
+									{ title :'to kill a mockingbird',
+									  author : {
+									  	firstName : 'Harper',
+									  	lastName : 'Lee'
+
+									  }
+									},
+
+									{ title :'ficciones',
+									  author : {
+									  	firstName : 'Luis',
+									  	lastName : 'Borges'
+
+									  }
+									},
+
+
+
+
+
+
+
+								]
+
+
+								// Each book should have a title and an author.
+								// The book author should be an object with a firstName and lastName.
+								// Be creative and add at least 5 books to the array
+								// var books = [todo];
+
+								// log out the books array
+								console.log(books);
+
+								// todo:
+								// Loop through the array of books using .forEach and print out the specified information about each one.
+								// start loop here
+								
+								books.forEach(function(element,index,array){
+									console.log("Book #" + (index + 1));
+								    console.log("Title: " + element.title);
+								    console.log("Author first name: " + element.author.firstName);
+								    console.log("Author last name: " + element.author['lastName']);
+								    console.log("---");
+
+
+
+								});
+
+								console.log('second Exercise');
+
+
+								var names = [];
+
+									  names = [
+									  { name: 'Ricardo De Los Santos',
+									  	lineage: {
+									  		family:'De Los Santos',
+									  		gender: 'male'
+									  	},
+									  	age:'24'
+
+									  },
+
+									  { name: 'Raymundo De Los Santos',
+									  	lineage: {
+									  		family:'De Los Santos',
+									  		gender: 'male'
+									  	},
+									  	age:'26'
+
+									  },
+
+									  { name: 'Ramiro De Los Santos',
+									  	lineage: {
+									  		family:'De Los Santos',
+									  		gender: 'male'
+									  	},
+									  	age:'32'
+
+									  },
+
+									  { name: 'Josue Ayala',
+									  	lineage: {
+									  		family:'Ayala',
+									  		gender: 'male'
+									  	},
+									  	age:'26'
+
+									  },
+
+									  { name: 'Angel Leal',
+									  	lineage: {
+									  		family:'Leal',
+									  		gender: 'male'
+									  	},
+									  	age:'27'
+
+									  },
+
+									  { name: 'Anna Morton',
+									  	lineage: {
+									  		family:'Morton',
+									  		gender: 'female'
+									  	},
+									  	age:'30'
+
+									  },
+								]  
+								    
+
+								names.forEach(function(name,index,array){
+									console.log("person #" + (index + 1));
+									console.log("name: " + name.name);
+									console.log("lineage: " + name.lineage['family']);
+									console.log("gender: " + name.lineage['gender']);
+									console.log("age: " + name.age);
+									console.log("===========");
+									
+
+								});
+
+
+
+
+									</script>
+									
+								</body>
+								</html>
+
+
+
+javascript: Math Objects
+
+math: JavaScript provides a built-in Math object with a variety of helpful properties and methods. One thing that is unique about that Math object is that all of its properties and methods are static. This means that you will always access the properties and methods by using Math.property-or-method, and that you will never do var math = new Math();.
+
+1a. Math.Random():	The Math.random() function returns a floating-point, pseudo-random number in the range [0, 1] that is, from 0 (inclusive) up to but not including 1 (exclusive), which you can then scale to your desired range.
+
+example:
+
+								function getRandomInt(min, max) {
+								    return Math.floor(Math.random() * (max - min + 1) + min);
+								} 
+
+
+1b. Math.round(): The Math.round() function returns the value of a number rounded to the nearest integer.
+
+example:
+
+								Math.round(20.49);  // 20
+								Math.round(20.5);   // 21
+								Math.round(-20.5);  // -20
+								Math.round(-20.51); // -21
+
+1c. Math.floor(): The Math.floor() function returns the largest integer less than or equal to a number.
+
+example:
+
+								Math.floor( 45.95); //  45
+								Math.floor(-45.95); // -46
+
+1d. Math.ceil(): The Math.ceil() function returns the smallest integer greater than or equal to a number.
+
+example: 
+
+								Math.ceil(.95);   // 1
+								Math.ceil(4);     // 4
+								Math.ceil(7.004); // 8
+
+
+1e. Math.pow(): The Math.pow() function returns the base to the exponent power, that is, base^exponent.
+
+example:
+
+								// 2 raised to the 16 power
+								Math.pow(2, 16); // 65536
+
+
+1f. Math.sqrt(): The Math.sqrt() function returns the square root of a number.
+
+example:
+
+								Math.sqrt(9);  // 3
+								Math.sqrt(2);  // 1.414213562373095
+								Math.sqrt(1);  // 1
+								Math.sqrt(0);  // 0
+								Math.sqrt(-1); // NaN
+
+
+Constants:
+
+Math.E: The Math.E property represents the base of natural logarithms, e, approximately 2.718.
+
+Math.PI: The Math.PI property represents the ratio of the circumference of a circle to its diameter, approximately 3.14159.
+
+
+example of all uses: 
+
+
+								(function() {
+							    "use strict";
+
+							    // create a circle object
+							    var circle = {
+							        radius: 3,
+
+							        getArea: function () {
+							            // TODO: complete this method
+							            // hint: area = pi * radius^2
+							            
+							            var area = Math.PI * Math.pow(this.radius,2);
+
+							            return area; // TODO: return the proper value
+
+
+							        },
+
+
+							        logInfo: function (doRounding) {
+							            // TODO: complete this method.
+							            var area = this.getArea();
+
+							            // If doRounding is true, round the result to the nearest integer.
+							            // Otherwise, output the complete value
+							            if (doRounding) {
+							                area = Math.round(area);
+							                return area;
+
+							            } else {
+							                return area;
+							            }
+
+
+							            
+							        }
+							    };
+
+
+							    // log info about the circle
+
+							    console.log("area of a circle with radius: " + circle.radius + " is " + circle.getArea());
+							    console.log("Raw circle information");
+							    console.log(circle.logInfo(false));
+							    console.log("Circle information rounded to the nearest whole number is");
+							    console.log(circle.logInfo(true));
+
+							    console.log("=======================================================");
+							    // TODO: Change the radius of the circle to 5.
+							    circle.radius = 5;
+							    // log info about the circle
+							    console.log("area of a circle with radius: " + circle.radius + " is " + circle.getArea());
+							    console.log("Raw circle information");
+							    console.log(circle.logInfo(false));
+							    console.log("Circle information rounded to the nearest whole number");
+							    console.log(circle.logInfo(true));
+
+							    console.log("=============================")
+							    console.log('Second attempt')
+							    
+							    var square = {
+							        side: 4,
+							    
+							       getArea: function () {
+							            var area = Math.pow(this.side,2);
+							            return area;
+							        },
+
+
+							        getSqrRt: function (squareroot) {
+							            var area = this.getArea();
+
+							            if (squareroot) {
+							                area = Math.sqrt(area);
+							                return area;
+							            }
+							        }
+
+
+							    };
+
+							    console.log('The area of a square with a side of: ' + square.side + " is: " + square.getArea());
+							    console.log('The square root of a square with a side of:' +square.side + " is " + square.getSqrRt(true));
+
+
+
+
+							})();
+
+=============================================
+
+javascript: BOM and DOM
+
+BOM: The Browser Object Model (BOM) allows JavaScript to interact with the web browser.
+
+Window: The window object is the core of the Browser Object Model, and it represents an instance of the web browser. Through the window object, we can control the browsers size and position, open pop-up windows, display system dialogs, or run interval based processing. The window object represents the JavaScript Global object. This means that any variables or functions declared in the global scope become part of the window object.
+
+for further research on Window: https://developer.mozilla.org/en-US/docs/Web/API/Window
+
+
+System Dialogs: In an earlier lesson, we covered alert(), confirm(), and prompt(). All of these dialogs are provided by the browser and are made available through the window object. Since the window object represents the Global JavaScript object, the methods can be called directly without mentioning the window object.
+
+Intervals and Timeouts: Sometimes, it is useful to execute code either at a set interval of time, or after a certain time interval has passed. The window object provides two methods for these purposes.
+
+1a. setInterval(): The setInterval() method allows code to be executed at a specified time interval. The specified code will continue executing at the given interval until the method clearInterval() is called.
+
+
+example: 
+
+										'use strict';
+
+								// this code will produce a console log every second
+								// when count >= max, the interval is cancelled, and the logging will stop
+
+								var count = 0;
+								var max = 10;
+								var interval = 1000; // interval time in milliseconds
+
+								var intervalId = setInterval(function () {
+								    if (count >= max) {
+								        clearInterval(intervalId);
+								        console.log('All done');
+								    } else {
+								        count++;
+								        console.log('Repeating this line ' + count);
+								    }
+								}, interval);
+
+
+As you can see in the example above, the setInterval() function takes in a function and an interval as parameters and returns an interval id. The function will continue to be executed at the interval until clearInterval() is called with the correct interval id. Intervals should be specified in milliseconds
+
+1b. setTimeout(): The setTimeout() method allows code to be executed after specified time interval has passed. The specified code will only be executed once. The timeout code execution can be cancelled via the clearTimeout() method.
+
+example:
+
+										'use strict';
+
+									var delay = 5000; // delay time in milliseconds
+
+									var timeoutId = setTimeout(function () {
+									    alert('Here is a delayed hello!');
+									}, delay);
+
+									// to cancel the timeout, you can call
+									// clearTimeout(timeoutId);
+									// prior to the delay expiring
+
+
+As you can see in the example above, the setTimeout() works much like setInterval(). It takes in a function and a delay, and the function will get executed one time at the end of the delay time. To cancel the function execution, clearTimeout() can be called passing the timeout id that was returned by the setTimeout() method.
+
+
+1c. Location: The location object is a very useful feature of the BOM. It is accessible though both the window object, and also the document object which will be discussed in the lessons on the Document Object Model.
+
+The location object is aware of the currently loaded document and provides detailed url information. The location object can also be used to redirect the browser to a new location.
+
+for further research: https://developer.mozilla.org/en-US/docs/Web/API/Window.location
+
+ Redirect Browser: window.location = 'http://www.google.com';
+
+ Reload page: location.reload(); // reload page, possibly from cache
+			  location.reload(true); // reload page from server
+
+
+1d. Navigator and History
+
+for further research: https://developer.mozilla.org/en-US/docs/Web/API/History
+					  https://developer.mozilla.org/en-US/docs/Web/API/Navigator
+
+
+example:
+
+					<html><head>
+					    <meta charset="utf-8">
+					    <title>Defuse the BOM</title>
+					</head>
+					<body cz-shortcut-listen="true">
+
+					<h2 id="message">This BOM will self destruct in <span id="timer">5</span> seconds...</h2>
+					<button id="defuser">Defuse the BOM</button>
+
+					<h2 id="second attempt"></h2>
+					<button></button>
+
+					<script>
+					(function() {
+					    "use strict";
+					console.log('fuuuck');
+					    var detonationTimer = 5;
+					    var interval = 1000;
+
+					    // TODO: This function needs to be called once every second
+					    function updateTimer() {
+					        if (detonationTimer == 0) {
+					            alert('EXTERMINATE!');
+					            document.body.innerHTML = "You're dead";
+					        } else if (detonationTimer > 0) {
+					            document.getElementById('timer').innerHTML = detonationTimer;
+					        }
+
+					        --detonationTimer;
+					    }
+					    var intervalID = setInterval(updateTimer,interval);
+
+
+					    
+
+					    // TODO: When this function runs, it needs to
+					    // cancel the interval/timeout for updateTimer()
+					    function defuseTheBOM() {
+					        clearInterval(intervalID);
+					        alert('you saved the day!');
+					    }
+
+					    // Don't modify anything below this line!
+					    //
+					    // This causes the defuseTheBOM() function to be called
+					    // when the "defuser" button is clicked.
+					    // We will learn about events in the DOM lessons
+					    var defuser = document.getElementById('defuser');
+					    defuser.addEventListener('click', defuseTheBOM);
+
+					    
+					})();
+					</script>
+
+
+					</body></html>
+
+
+
+
+
+
+
+
