@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>calculator</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+	<style>
+		.container {
+			text-align: center;
+
+		}
+
+	</style>
+<body>
+	<div class='container'>
+		<div class='output-panel'>
+			<input id='left-panel' type="text" readonly="true">
+			<input id='middle-panel' type="text" readonly="true" >
+			<input id='right-panel' type="text" readonly="true">	
+		</div>
+		<div class='btn-row' id='plus-operator'>
+			<button class="btn btn-default numbers" value='1'>1</button>
+			<button class="btn btn-default numbers" value='2'>2</button>
+			<button class="btn btn-default numbers" value='3'>3</button>
+			<button class="btn btn-default operator" id='plus' value='+'>+</button>
+			
+		</div>
+		<div class='btn-row' id='minus-operator'>
+			<button class="btn btn-default numbers" value='4'>4</button>
+			<button class="btn btn-default numbers" value='5'>5</button>
+			<button class="btn btn-default numbers" value='6'>6</button>
+			<button class="btn btn-default operator" id='minus' value='-'>-</button>
+		</div>
+		<div class='btn-row' id='multiply-operator'>
+			<button class="btn btn-default numbers" value='7'>7</button>
+			<button class="btn btn-default numbers" value='8'>8</button>
+			<button class="btn btn-default numbers" value='9'>9</button>
+			<button class="btn btn-default operator" id='multiply' value='*'>*</button>
+		</div>
+		<div class='btn-row' id='division-operator'>
+			<button class="btn btn-default" id='reset' >C</button>
+			<button class="btn btn-default numbers" value='0'>0</button>
+			<button class="btn btn-default" id='equals' value='='>=</button>
+			<button class="btn btn-default operator" id='division' value='/'>/</button>
+		</div>
+		
+	</div>
+		<script>
+		"use strict";
+		(function(){
+			// left panel receives numbers being operated
+			// middle panel receives operator
+			// right panel receives result
+
+			// create operator functions
+			// creace C function which resets everything back to null
+
+			var left_panel = document.getElementById('left-panel'); 
+			var middle_panel = document.getElementById('middle-panel');
+			var right_panel = document.getElementById('right-panel');
+			var btn_value = document.getElementsByClassName('numbers');
+			var operator = document.getElementsByClassName('operator');
+			var equals = document.getElementById('equals');
+			var reset = document.getElementById('reset');
+			
+			for (var i = 0; i < btn_value.length; i++) {
+					btn_value[i].addEventListener('click',leftScreen);
+					btn_value[i].addEventListener('click',rightScreen);
+				}
+
+			for (var i = 0; i < operator.length; i++) {
+					operator[i].addEventListener('click',operatorScreen);
+					console.log('==================');
+					console.log('values of operators: ' + operator[i].value);
+					
+				}
+
+			function leftScreen(event) {
+				if (middle_panel.value == '' && right_panel.value == '') {
+					left_panel.value += this.getAttribute('value');
+				}
+			}
+
+
+			function operatorScreen(event) {
+				if (left_panel.value != '') {
+					middle_panel.value += this.getAttribute('value');
+				}
+			}
+
+			function rightScreen(event) {
+				var results;
+				if (left_panel.value != '' && middle_panel.value != '') {
+					right_panel.value += this.getAttribute('value');
+				}
+			}
+
+			function resets(event) {
+				left_panel.value = '';
+				middle_panel.value = '';
+				right_panel.value = '';
+
+				if (left_panel.value == '' && middle_panel.value == '' && right_panel.value == '') {
+					for (var i = 0; i < btn_value.length; i++) {
+						var btns = btn_value[i];
+						btns.removeAttribute('disabled');
+					}
+					for (var i = 0; i < operator.length; i++) {
+						var operators = operator[i];
+						operators.removeAttribute('disabled');	
+					
+					}
+				}
+
+
+			}
+			// this function disables number & operator buttons to remove bug that adds numbers after calculation are finished.
+			function clean(event) {
+				if (left_panel.value != '' && middle_panel.value != '' && right_panel.value != '') {
+					for (var i = 0; i < btn_value.length; i++) {
+						var btns = btn_value[i];
+							btns.setAttribute('disabled', true); 
+						 
+					}
+
+					for (var i = 0; i < operator.length; i++) {
+						var operators = operator[i];
+						operators.setAttribute('disabled', true);	
+					
+					}
+
+				}
+			}
+
+			function results() {
+				if (middle_panel.value.trim() == ('+')) {
+					right_panel.value = parseFloat(left_panel.value) + parseFloat(right_panel.value);
+				}else if (middle_panel.value.trim() == ('-')) {
+					right_panel.value = parseFloat(left_panel.value) - parseFloat(right_panel.value);
+				}else if (middle_panel.value.trim() == ('*')) {
+					right_panel.value = parseFloat(left_panel.value) * parseFloat(right_panel.value);
+				}else if (middle_panel.value.trim() == ('/')) {
+					right_panel.value = parseFloat(left_panel.value) / parseFloat(right_panel.value);
+				}
+
+			}
+
+			
+			equals.addEventListener('click',results);
+			reset.addEventListener('click',resets);
+			equals.addEventListener('click',clean);
+			reset.addEventListener('click',clean);
+
+			
+		})();
+		</script>
+	
+</body>
+</html>
