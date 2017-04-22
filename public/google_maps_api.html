@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        #map-canvas {
+            width: 770px;
+            height: 481px;
+            margin-right: 400px;
+            position: absolute;
+        }
+        
+        html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+
+      }
+      #right-panel {
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+      #right-panel select, #right-panel input {
+        font-size: 15px; 
+      }
+
+      #right-panel select {
+        width: 100%;
+      }
+
+      #right-panel i {
+        font-size: 12px;
+      }
+      #right-panel {
+        height: 100%;
+        float: right;
+        width: 390px;
+        overflow: auto;
+        left:2em;
+        
+       
+      }
+     
+      #floating-panel {
+        background: #fff;
+        padding: 5px;
+        font-size: 14px;
+        font-family: Arial;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+              }
+      @media print {
+        #map-canvas {
+          height: 500px;
+          margin: 0;
+        }
+        #right-panel {
+          float: none;
+          width: auto;
+        }
+      }
+    </style>
+</head>
+<body>
+	<div class='container'>
+	    
+	    <div class= 'col-sm-2' 'zoomButtons'>
+			<button type="button" id="zoom5" class="btn btn-success">5</button>
+			<button type="button" id="zoom15" class="btn btn-success">15</button>
+			<button type="button" id="zoom20" class="btn btn-success">20</button>
+		</div>
+
+		<div id="floating-panel">
+      <strong>Start:</strong>
+    <form>
+      <label for='start'>Enter address</label>
+        <input type="text" id='start'  type="text" placeholder='123 street,tx,78238'>
+       	
+      
+      <br>
+      <strong>End:</strong>
+      <select id="end"></select>
+	</form>
+    </div>
+		<div class='col-sm-4' id="right-panel"></div>    
+	    <!-- div to hold map -->
+	    <div class='col-md-4' id="map-canvas"></div>
+	<div>
+
+    <!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJwI6AgQuhXVsAyGbX3ZPUMwWmtaANDGo"></script>
+
+    <!-- Script to show address on map -->
+    <script type="text/javascript">
+    (function() {
+        "use strict";
+
+        // Set our map options
+        var mapOptions = {
+            // Set the zoom level
+            zoom: 12,
+
+            // This sets the center of the map at our location
+            center: {
+                lat:  29.413769,
+                lng: -98.490897
+            },
+             // Show this map in satellite view
+    		mapTypeId: google.maps.MapTypeId.SATELLITE,
+    		
+        };
+        	
+
+        // Render the map
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+		// Include code from previous example
+	
+		// Set our address to geocode
+		var address = "300 Alamo Plaza, San Antonio, TX, 78205";
+
+		// Init geocoder object
+		var geocoder = new google.maps.Geocoder();
+
+		// Geocode our address
+		geocoder.geocode({ "address": address }, function(results, status) {
+
+
+
+		   // Check for a successful result
+		   if (status == google.maps.GeocoderStatus.OK) {
+
+		       // Recenter the map over the address
+		       map.setCenter(results[0].geometry.location);
+		   } else {
+
+		       // Show an error message with the status if our request fails
+		       alert("Geocoding was not successful - STATUS: " + status);
+		   }
+		});
+
+
+
+		// grabbing button elements to let user choose zoom options
+		var zoomFive = document.getElementById("zoom5");
+    	var zoomFifteen = document.getElementById("zoom15");
+    	var zoomTwenty = document.getElementById("zoom20");
+    	
+    	
+    	function changeZoom (event) {
+    		map.setZoom(parseInt(this.innerText))
+    		console.log(this.innerText);
+    	}
+
+    	zoomFive.addEventListener('click',changeZoom);
+    	zoomFifteen.addEventListener('click',changeZoom);
+    	zoomTwenty.addEventListener('click',changeZoom);
+
+    	function initMap() {
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var directionsService = new google.maps.DirectionsService;
+        
+        directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById('right-panel'));
+
+        var control = document.getElementById('floating-panel');
+        control.style.display = 'block';
+        map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+
+        var onChangeHandler = function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        };
+        document.getElementById('start').addEventListener('change', onChangeHandler);
+        document.getElementById('end').addEventListener('change', onChangeHandler);
+      }
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        var start = document.getElementById('start').value;
+        var end = document.getElementById('end').value;
+        directionsService.route({
+          origin: start,
+          destination: end,
+          travelMode: 'DRIVING'
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+
+
+initMap();
+
+	
+    	var goodEats = [
+    		{restauraunt: 'Cured',
+    		 	directions: {
+    		 		lat: 29.442099,
+    		 		lng: -98.479919,
+
+	    		 		
+	    		 	
+    		 	},
+
+    		 	address:'306 pearl pkwy #101, san antonio, tx 78215',
+
+    		 	information: {
+    		 		content: 'Cured',
+    		 		
+    		 	},	 	   
+    			
+    		},
+
+    		{restauraunt: 'The Cove',
+    		 	directions: {
+    		 		lat: 29.440214,
+    		 		lng: -98.500656,
+
+	    		 		
+	    		 	
+    		 	},
+
+    		 	address:'606 w cypress st, san antonio, tx 78212',
+
+    		 	information: {
+    		 		content: 'The Cove',
+    		 		
+    		 	}
+    		 },
+
+    		{restauraunt: 'HotJoy',
+    		 	directions: {
+    		 		lat: 29.413769,  
+    		 		lng: -98.490897,
+
+	    		 		
+	    		 	
+    		 	},
+
+    		 	address:'1014 s alamo st, san antonio, tx 78210',
+
+    		 	information: {
+    		 		content: 'HotJoy',
+    		 		
+    		 	}
+    		 },
+
+    		{restauraunt: 'Barbaro',
+    		 	directions: {
+    		 		lat: 29.455676, 
+    		 		lng: -98.491667,
+
+	    		 		
+	    		 	
+    		 	},
+
+    		 	address:'2720 mccullough ave, san antonio, tx 78212',
+
+    		 	information: {
+    		 		content: 'Barbaro',
+    		 		
+    		 	}
+    		 }
+    	];
+
+    	goodEats.forEach(function(element,index,array){
+   				var markers = new google.maps.Marker({
+			    position: element.directions,
+			    animation: google.maps.Animation.DROP,
+			    draggable: true,
+			    map: map
+				});
+    			
+    			var restauraunt = element.information['content'];
+    			
+				var info = new google.maps.InfoWindow({
+		   		 	content: restauraunt
+		   		 	
+				});
+				
+				markers.addListener('click',function(){
+					// Open the window using our map and marker
+					info.open(map,markers);
+				});
+
+				
+								
+				function addressForDirections(){
+					var address = element.address;
+					var location = element.directions;
+					var option = document.createElement('option');
+					option.text = restauraunt;
+					option.value = address;
+					
+
+					var end = document.getElementById('end');
+					end.appendChild(option);
+
+					console.log('restauraunt ' + restauraunt);
+					console.log('===========');
+					console.log('latlong ' + location);
+					console.log('===========');
+					console.log('address ' + address);
+					console.log('===========');
+					console.log('option value ' + option.value);
+				} 
+				
+
+addressForDirections();
+
+
+    		
+    });
+
+	})();
+
+			function suicide_prequisites(suicide_pact) {
+				var single, bad_economy, wwIII;
+				single = true;
+				bad_economy = true;
+				wwIII = true;
+
+				if (single && bad_economy && wwIII) {
+					var sam = 23;
+					var ric = 24;
+					var people = [sam,ric];
+					people.forEach(function(element,index,array) {
+						var cut_off_age = element + 5;
+						console.log('us' + cut_off_age);
+						console.log('A.chal ' + suicide_pact);
+					});
+
+				}
+
+			}
+
+			var suicide_pact = 'Japan forest';
+
+
+			suicide_prequisites(suicide_pact);
+
+    </script>
+</body>

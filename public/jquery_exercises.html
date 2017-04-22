@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery</title>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div class='container'>
+		<div class='first_part'>
+			<h1 class="codeup">hello brother's!</h1>	
+			<p id='paragraph'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt pariatur voluptates quibusdam repudiandae veniam optio aperiam voluptatum consequuntur vero, iusto dolorem officiis aliquam qui, saepe dignissimos cupiditate modi corporis vel?</p>
+				<ul class='codeup'>
+					<li>dokey kong</li>
+					<li>mario</li>
+					<li>zelda</li>
+				</ul>
+				<h3>codeup</h3>
+		</div>
+	</div>
+
+	<script>
+		$('li').css('font-size','20px');
+		$('h1,li,p').css('background-color','yellow');
+
+		var contents = $('h1').html();
+		alert(contents);
+
+	</script>
+	
+</body>
+</html>

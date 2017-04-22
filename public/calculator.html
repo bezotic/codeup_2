@@ -13,6 +13,16 @@
 
 		}
 
+		.numbers {
+			background-color: #E0E0E0;
+		}
+		.operator  {
+			background-color: #FB9146;
+		}
+
+		#equals {
+			background-color: #FB9146;
+		}
 	</style>
 <body>
 	<div class='container'>
@@ -80,21 +90,28 @@
 
 			function leftScreen(event) {
 				if (middle_panel.value == '' && right_panel.value == '') {
-					left_panel.value += this.getAttribute('value');
+					left_panel.value += this.value;
 				}
 			}
 
 
 			function operatorScreen(event) {
 				if (left_panel.value != '') {
-					middle_panel.value += this.getAttribute('value');
+					middle_panel.value += this.value;
+
+					for (var i = 0; i < operator.length; i++) {
+						var operators = operator[i];
+						operators.setAttribute('disabled', true);	
+					
+					}
+						
 				}
 			}
 
 			function rightScreen(event) {
 				var results;
 				if (left_panel.value != '' && middle_panel.value != '') {
-					right_panel.value += this.getAttribute('value');
+					right_panel.value += this.value;
 				}
 			}
 
@@ -103,7 +120,7 @@
 				middle_panel.value = '';
 				right_panel.value = '';
 
-				if (left_panel.value == '' && middle_panel.value == '' && right_panel.value == '') {
+				if (right_panel.value == '') {
 					for (var i = 0; i < btn_value.length; i++) {
 						var btns = btn_value[i];
 						btns.removeAttribute('disabled');
@@ -113,16 +130,18 @@
 						operators.removeAttribute('disabled');	
 					
 					}
+						reset.removeAttribute('style');
 				}
 
 
 			}
 			// this function disables number & operator buttons to remove bug that adds numbers after calculation are finished.
 			function clean(event) {
-				if (left_panel.value != '' && middle_panel.value != '' && right_panel.value != '') {
+				if (right_panel.value != '') {
 					for (var i = 0; i < btn_value.length; i++) {
 						var btns = btn_value[i];
 							btns.setAttribute('disabled', true); 
+
 						 
 					}
 
@@ -131,6 +150,7 @@
 						operators.setAttribute('disabled', true);	
 					
 					}
+						reset.style['background-color'] = '#96d1d0';
 
 				}
 			}
@@ -145,6 +165,7 @@
 				}else if (middle_panel.value.trim() == ('/')) {
 					right_panel.value = parseFloat(left_panel.value) / parseFloat(right_panel.value);
 				}
+					alert('Reset to start new problem');
 
 			}
 
@@ -154,6 +175,7 @@
 			equals.addEventListener('click',clean);
 			reset.addEventListener('click',clean);
 
+			
 			
 		})();
 		</script>
