@@ -7,6 +7,15 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<style>
+		h1.dbl {
+			font-size: 16px;
+		}
+
+		#paragraph.click {
+			font-size: 20px;
+		}
+	</style>
 
 </head>
 <body>
@@ -24,11 +33,28 @@
 	</div>
 
 	<script>
-		$('li').css('font-size','20px');
-		$('h1,li,p').css('background-color','yellow');
+		$('h1').hover(
+			function(){
+				$(this).css('background-color','blue');
+			},
+			 function() {
+		        $(this).css('background-color', '#FFF');
+		    }
+		);
 
-		var contents = $('h1').html();
-		alert(contents);
+
+		var h1dbl = $('h1:first');
+		h1dbl.dblclick(function(){
+			h1dbl.toggleClass('dbl');
+		}); 
+
+		var para = $('#paragraph:first');
+		para.click(function(){
+			para.toggleClass('click');
+		}); 
+
+		
+		38, 38, 40, 40, 37, 39, 37, 39, 66, 65
 
 	</script>
 	
