@@ -7,11 +7,135 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<style>
+		.invisible {
+			display:none;
+		}
+		.highlight {
+			background-color: red;
+		}
+		.yellow {
+			background-color: yellow;
+		}
+
+		.bold-font {
+			font-weight:bold;
+		}
+		
+	</style>
+
 </head>
 <body>
+	<div class='container'>
+		<div class='col-md-4 nationalParks'>
+			<h1>National parks FAQ</h1>
+				<dl>
+					<dt>Glacier National Park</dt>
+					<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium perspiciatis aliquam dicta architecto saepe mollitia exercitationem quam. Eveniet ex porro recusandae, velit nam minus blanditiis reprehenderit! Earum aspernatur, quasi praesentium.</dd>
+					<dt>Grand Teton</dt>
+					<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis ut, atque eos dignissimos quis dolores sed, quibusdam. Nulla sapiente, totam rerum, asperiores odit deleniti quam architecto alias quas nesciunt eligendi!</dd>
+					<dt>Grand Canyon</dt>
+					<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis unde assumenda, necessitatibus maiores quos impedit minima facere, pariatur quae maxime eum dolores rem voluptatem temporibus quisquam voluptatum doloremque alias reiciendis.</dd>
+					<dt>Yosemite</dt>
+					<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto iste pariatur atque fuga cupiditate ipsum. Veniam, molestias, nesciunt. Magnam doloremque eius nesciunt hic minima ullam porro incidunt, unde tempore eos?</dd>
+					<dt>Yellowstone</dt>
+					<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet ad tenetur, culpa laudantium eaque reiciendis, totam nemo soluta ullam, rerum suscipit. Soluta, optio, hic! Dignissimos commodi iure et officiis aperiam.</dd>
+					<dt>Bryce Canyon</dt>
+					<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae pariatur earum neque in molestiae molestias est, nam, enim cumque officia libero delectus nesciunt dolor! Illo quod deserunt autem placeat sit!</dd>
+					<dt>Acadia</dt>
+					<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sint voluptate doloremque commodi incidunt maiores, voluptatibus et, quo excepturi quas explicabo rem consequuntur enim odit odio quam deserunt sed corporis!</dd>
+					<dt>Everglades</dt>
+					<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, illo architecto eveniet nam veritatis nulla saepe deleniti ad! Accusamus aut quae itaque quisquam magni inventore aliquid ipsum molestiae atque vitae.</dd>
+					<dt>Badlands</dt>
+					<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dolorem atque repudiandae architecto soluta culpa autem eaque, doloribus at sequi animi tempore possimus distinctio illum, dolorum similique! Saepe, sint, temporibus.</dd>
+					<dt>Evergalades</dt>
+					<dd class='invisible'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum soluta atque quidem repellendus rem ipsam perspiciatis ducimus cumque quia veniam, ad itaque perferendis placeat vitae iusto necessitatibus vel, quisquam commodi!</dd>
+				</dl>
+					<a id='showData' href="#">show description</a>
+			
+			
+					<h1>National Park Facts</h1>
+				
+					<h3 class='parkHeader yos'>Yosemite</h3>
+					<ul id='yosemite'>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa officiis sit quia voluptate totam, recusandae aliquid libero natus consequatur! Optio quis magni, quaerat tempora temporibus unde adipisci reprehenderit, amet odit.</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat eos dolore saepe fugit commodi, ex quibusdam hic, illum tenetur laborum id ut dolorum voluptatibus sed quasi temporibus sunt? Veritatis, nihil!</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti animi pariatur dolorum, culpa exercitationem repudiandae. Quam, illo, iure! Praesentium nemo hic doloremque repellat accusantium. Doloribus voluptatibus cumque beatae, qui tempore?</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga earum repellat et consequatur nulla, laboriosam cupiditate saepe alias eos explicabo aperiam tempore eligendi, accusantium eius reiciendis impedit deleniti odit, accusamus.</li>	
+					</ul>
+					<h3 class='parkHeader grand' >Grand Canyon</h3>
+					<ul id='grandCanyon'>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui eos autem dolore molestiae error, impedit? Amet officia architecto voluptate, totam, temporibus dignissimos voluptatem placeat maxime ipsum, quas consectetur autem et!</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt error placeat molestias aut quaerat eligendi quo autem magnam perferendis eveniet consequatur at voluptas, dolorem beatae repellat reprehenderit nostrum, et. Aliquam.</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id neque ipsum, numquam beatae, voluptates libero doloribus vitae delectus, molestias doloremque a at repudiandae nisi atque sapiente voluptate. Dignissimos facilis, saepe!</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus at neque error aliquid repellat incidunt laudantium inventore expedita quod eos, dolores nihil? Numquam perspiciatis voluptatibus perferendis soluta ipsum, assumenda illum.</li>
+						
+					</ul>
+					<h3 class='parkHeader stone'>Yellowstone</h3>
+					<ul id='yellowstone'>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda quae sed dignissimos modi tempore, veritatis fugit nobis ipsum, nostrum quas qui cumque accusamus aliquid error distinctio numquam. Maxime obcaecati, necessitatibus.</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa laborum provident quisquam perspiciatis dignissimos aut, voluptates consectetur. Repellendus ad, quibusdam voluptatibus doloremque beatae assumenda inventore ipsum. Officia hic a, possimus.</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea voluptatem, praesentium eligendi illum sed maiores nam laborum, ipsa itaque veritatis ipsum atque amet! Quia dignissimos quod ipsum vero consectetur? Officiis.</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas harum nobis quos quibusdam voluptatem eum sapiente nihil dolore similique sed molestiae quia minima suscipit, consequuntur consectetur ad magni facere! Mollitia.</li>	
+					</ul>
+					<div class='col-md-4'>
+						<button type="button" id="yellow" class="btn btn-success">Highlight</button>
+					</div>
+			</div>		
+	</div>
 <script>
 	'use strict'
+	function showData() {
+		var showDescription = $('#showData');
+		var invisible = $('.invisible');
+		showDescription.click(function(){
+			invisible.toggleClass();
+		})
+	}
 
+	function poop() {
+		 $('dt').each(function(index,element){
+		 	$(element).click(function(){
+		 		$(this).toggleClass('highlight');
+		 	})
+		 });
+
+	}
+	function highlightlistItems() {
+		var button = $('#yellow');
+		console.log(button);
+		button.click(function(){
+			var unordered = $('ul');
+			unordered.each(function(index,element){
+				$(this).children().last().toggleClass('yellow');
+			})
+			
+		});
+	}
+
+	function header() {
+		var yosemite = $('#yosemite');
+		var grandCanyon = $('#grandCanyon');
+		var yellowstone = $('#yellowstone');
+		$('.yos').click(function(){
+			$(yosemite).children().toggleClass('bold-font');
+		});	
+
+		$('.grand').click(function(){
+			$(grandCanyon).children().toggleClass('bold-font');
+		});
+
+		$('.stone').click(function(){
+			$(yellowstone).children().toggleClass('bold-font');
+		});
+	}
+
+	
+
+	showData();
+	poop();
+	highlightlistItems();
+	header();
 	
 
 
